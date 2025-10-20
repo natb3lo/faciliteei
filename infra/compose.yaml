@@ -1,0 +1,8 @@
+services:
+  database:
+    image: "postgres:16.10-alpine3.22"
+    container_name: "faciliteei-local-db"
+    environment:
+      POSTGRES_PASSWORD: "local_password"
+    ports:
+      - "5432:5432"
