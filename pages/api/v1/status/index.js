@@ -1,7 +1,15 @@
+import database from "../../../../infra/database";
+
 // GET: api/v1/status
-function status(request, response) {
+async function status(request, response) {
+  let queryResult = null;
+
+  queryResult = await database.query("SHOW server_version;");
+  const serverVersion = queryResult[0].server_version;
   response.status(200).json({
-    message: "Status endpoint comming soon...",
+    database: {
+      version: serverVersion,
+    },
   });
 }
 
